@@ -2,4 +2,4 @@
 An online web game made as part of the TU Delft Web & Databases course. 
 
 ## How to play?
-Hosted [here](https://neon-disc-warfare.herokuapp.com/), simply enter your name and you will be matched with the next person in the queue.
+Hosted [here](https://neon-disc-warfare.herokuapp.com/), simply enter your name and you will be matched with the next person in the queue. Each browser tab opens a new websocket connection with the server. 
