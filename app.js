@@ -37,6 +37,10 @@ class Player {
 var gamesInitialized = 0;
 var gamesSince = new Date(Date.now());
 
+function debugLog(message) {
+    console.log(`[LOG] ${new Date().toISOString()}\t${message}`)
+}
+
 // SERVER /////////////////////////////////////////////////////////////////////////////////////////
 
 // Create Express server and bind necessary middleware components
@@ -51,13 +55,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Log every request received by the server
 app.use(function(req, res, next) {
-	console.log('[LOG] %s\t%s\t%s\t%s',
-		new Date().toISOString(), // timestamp
-		req.connection.remoteAddress, // client's address
-		req.method, // HTTP method
-		req.url // requested URL
-	);
+	debugLog(`${req.connection.remoteAddress}\t${req.method}\t${req.url}`);
 	next(); // call on to next component
+});
+
+var listener = app.listen(80, function () {
+    debugLog('Express listening on port ' + listener.address().port); // Listening on port 80 by default
 });
 
 
